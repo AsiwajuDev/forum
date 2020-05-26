@@ -1,10 +1,13 @@
 import React from "react";
 
-const Footer = () => {
+const Footer = ({ brandName }) => {
   return (
     <div>
       <footer className="bg-dark text-white mt-5 p-3 text-center">
-        Copyright &copy; 2020 - {new Date().getFullYear()} Dev Connector
+        Copyright &copy;
+        <span className="lead">
+          {new Date().getFullYear()} {brandName}
+        </span>
       </footer>
     </div>
   );
