@@ -23,8 +23,16 @@ class App extends Component {
             render={() => <Landing brandName={brandName} />}
           />
           <div className="container">
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
+            <Route
+              exact
+              path="/register"
+              render={() => <Register brandName={brandName} />}
+            />
+            <Route
+              exact
+              path="/login"
+              render={() => <Login brandName={brandName} />}
+            />
           </div>
           <Footer brandName={brandName} />
         </div>
