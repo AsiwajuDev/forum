@@ -1,13 +1,16 @@
 import React from "react";
 import "./App.css";
 
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
+import Landing from "./components//layout/Landing";
+
 function App() {
   return (
-    <div className="App">
-      <div class="jumbotron text-center">
-        <h1>My First Bootstrap Page</h1>
-        <p>Resize this responsive page to see the effect!</p>
-      </div>
+    <div>
+      <Navbar />
+      <Landing />
+      <Footer />
     </div>
   );
 }
