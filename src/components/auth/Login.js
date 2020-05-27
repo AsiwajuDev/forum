@@ -1,10 +1,73 @@
 import React, { Component } from "react";
 
 class Login extends Component {
+  constructor(props) {
+    super();
+    this.state = {
+      email: "",
+      password: "",
+      errors: {},
+    };
+
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
+  }
+
+  onSubmit(event) {
+    event.preventDefault();
+
+    const returnUser = {
+      email: this.state.email,
+      password: this.state.password,
+    };
+
+    console.log(returnUser);
+  }
+
   render() {
     return (
       <div>
-        <h1>Login</h1>
+        <div class="login p-4">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-5 col-sm-10 col-xs-10 m-auto">
+                <div className="card shade p-5 mb-4 bg-white radius">
+                  <h1 class="text-center">Log In</h1>
+                  <p class="lead text-center">
+                    Login to your {this.props.brandName} account
+                  </p>
+                  <form onSubmit={this.onSubmit}>
+                    <div class="form-group">
+                      <input
+                        type="email"
+                        class="form-control"
+                        placeholder="Email Address"
+                        name="email"
+                        value={this.state.email}
+                        onChange={this.onChange}
+                      />
+                    </div>
+                    <div class="form-group">
+                      <input
+                        type="password"
+                        class="form-control"
+                        placeholder="Password"
+                        name="password"
+                        value={this.state.password}
+                        onChange={this.onChange}
+                      />
+                    </div>
+                    <input type="submit" class="btn btn-info btn-block mt-5" />
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

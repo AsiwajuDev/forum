@@ -37,8 +37,8 @@ class Register extends Component {
         <div className="register p-4">
           <div className="container">
             <div className="row">
-              <div className="col-md-6 col-sm-10 col-xs-10 m-auto">
-                <div className="card shadow p-5 mb-4 bg-white">
+              <div className="col-md-5 col-sm-10 col-xs-10 m-auto">
+                <div className="card shade p-5 mb-4 bg-white radius">
                   <h1 className="text-center">Register</h1>
                   <p className="lead text-center">
                     Create your {this.props.brandName} account

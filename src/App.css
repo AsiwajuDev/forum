@@ -37,3 +37,11 @@ img {
 .form-control::placeholder {
   color: #bbb !important;
 }
+
+.radius {
+  border-radius: 15px !important;
+}
+
+.shade {
+  box-shadow: 0px 1px 1px 3px rgb(247, 245, 245);
+}
