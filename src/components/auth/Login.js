@@ -31,37 +31,40 @@ class Login extends Component {
   render() {
     return (
       <div>
-        <div class="login p-4">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-5 col-sm-10 col-xs-10 m-auto">
+        <div className="login p-4">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-5 col-sm-10 col-xs-10 m-auto">
                 <div className="card shade p-5 mb-4 bg-white radius">
-                  <h1 class="text-center">Log In</h1>
-                  <p class="lead text-center">
+                  <h1 className="text-center">Log In</h1>
+                  <p className="lead text-center">
                     Login to your {this.props.brandName} account
                   </p>
                   <form onSubmit={this.onSubmit}>
-                    <div class="form-group">
+                    <div className="form-group">
                       <input
                         type="email"
-                        class="form-control"
+                        className="form-control"
                         placeholder="Email Address"
                         name="email"
                         value={this.state.email}
                         onChange={this.onChange}
                       />
                     </div>
-                    <div class="form-group">
+                    <div className="form-group">
                       <input
                         type="password"
-                        class="form-control"
+                        className="form-control"
                         placeholder="Password"
                         name="password"
                         value={this.state.password}
                         onChange={this.onChange}
                       />
                     </div>
-                    <input type="submit" class="btn btn-info btn-block mt-5" />
+                    <input
+                      type="submit"
+                      className="btn btn-info btn-block mt-5"
+                    />
                   </form>
                 </div>
               </div>
