@@ -1,6 +1,8 @@
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 
-import { GET_ERRORS } from "./types";
+import { GET_ERRORS, SET_CURRENT_USER } from "./types";
+import setAuthToken from "../../utils/setAuthToken";
 
 //Register User
 export const registerUser = (userData, history) => (dispatch) => {
@@ -13,4 +15,36 @@ export const registerUser = (userData, history) => (dispatch) => {
         payload: error.response.data,
       })
     );
+};
+
+//Login User
+export const loginUser = (userData) => (dispatch) => {
+  axios
+    .post("/users/login", userData)
+    .then((response) => {
+      //save to local storage
+      const { token } = response.data;
+      //set token to local storage
+      localStorage.setItem("jwtToken", token);
+      //set token to Auth header
+      setAuthToken(token);
+      //deocde token to get user data
+      const decoded = jwt_decode(token);
+      //set current user
+      dispatch(setCurrentUser(decoded));
+    })
+    .catch((error) =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: error.response.data,
+      })
+    );
+};
+
+//set logged in/current user
+export const setCurrentUser = (decoded) => {
+  return {
+    type: SET_CURRENT_USER,
+    payload: decoded,
+  };
 };
