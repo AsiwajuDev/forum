@@ -34,6 +34,12 @@ class Login extends Component {
     }
   }
 
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard");
+    }
+  }
+
   onSubmit(event) {
     event.preventDefault();
 
