@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import { Provider } from "react-redux";
 
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authAction/authAction";
 import { clearCurrentProfile } from "./actions/profileAction/profileAction";
+
+import PrivateRoute from "./container/privateRoute/privateRoute";
 
 import store from "./store";
 
@@ -64,11 +66,9 @@ class App extends Component {
                 path="/login"
                 render={() => <Login brandName={brandName} />}
               />
-              <Route
-                exact
-                path="/dashboard"
-                render={() => <Dashboard brandName={brandName} />}
-              />
+              <Switch>
+                <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              </Switch>
             </div>
             <Footer brandName={brandName} />
           </div>
