@@ -4,10 +4,13 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import { logoutUser } from "../../actions/authAction/authAction";
+import { clearCurrentProfile } from "../../actions/profileAction/profileAction";
 
 class Navbar extends Component {
   onLogoutClick(event) {
     event.preventDefault();
+
+    this.props.clearCurrentProfile();
 
     this.props.logoutUser();
     this.props.history.push("/posts");
@@ -102,32 +105,6 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { logoutUser })(withRouter(Navbar));
-
-// <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4 p-3">
-//   <div className="container">
-//     <Link className="navbar-brand" to="/">
-//       {this.props.brandName}
-//     </Link>
-//     <button
-//       className="navbar-toggler"
-//       type="button"
-//       data-toggle="collapse"
-//       data-target="#mobile-nav"
-//     >
-//       <span className="navbar-toggler-icon"></span>
-//     </button>
-
-//     <div className="collapse navbar-collapse" id="mobile-nav">
-//       <ul className="navbar-nav mr-auto">
-//         <li className="nav-item">
-//           <Link className="nav-link" to="/profiles">
-//             {" "}
-//             Developers
-//           </Link>
-//         </li>
-//       </ul>
-//       {isAuthenticated ? authLink : guestLinks}
-//     </div>
-//   </div>
-// </nav>
+export default connect(mapStateToProps, { logoutUser, clearCurrentProfile })(
+  withRouter(Navbar)
+);
