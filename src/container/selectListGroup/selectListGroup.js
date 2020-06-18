@@ -3,11 +3,11 @@ import PropTypes from "prop-types";
 import classnames from "classnames";
 
 const SelectListGroup = ({ name, value, error, info, onChange, options }) => {
-  const selectOptions = options.map((option) => {
+  const selectOptions = options.map((option) => (
     <option key={option.label} value={option.value}>
       {option.label}
-    </option>;
-  });
+    </option>
+  ));
 
   return (
     <div>

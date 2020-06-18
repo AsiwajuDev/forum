@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 import TextFieldGroup from "../../container/inputGroup/textFieldGroup";
+import TextareaFieldGroup from "../../container/textareaGroup/textareaFieldGroup";
+import SelectListGroup from "../../container/selectListGroup/selectListGroup";
+import InputIconGroup from "../../container/inputIconGroup/inputIconGroup";
 
 class CreateProfile extends Component {
   constructor(props) {
