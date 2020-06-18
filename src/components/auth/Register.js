@@ -5,11 +5,11 @@ import { connect } from "react-redux";
 
 import TextFieldGroup from "../../container/inputGroup/textFieldGroup";
 
-import { registerUser } from "../../actions/authAction/authAction";
+import { registerUserAction } from "../../actions/authAction/authAction";
 
 class Register extends Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
       name: "",
       email: "",
@@ -47,7 +47,7 @@ class Register extends Component {
       password2: this.state.password2,
     };
 
-    this.props.registerUser(newUser, this.props.history);
+    this.props.registerUserAction(newUser, this.props.history);
   }
 
   render() {
@@ -97,7 +97,7 @@ class Register extends Component {
                     <TextFieldGroup
                       placeholder="Confirm Password"
                       name="password2"
-                      type="password2"
+                      type="password"
                       value={this.state.password2}
                       onChange={this.onChange}
                       error={errors.password2}
@@ -119,7 +119,7 @@ class Register extends Component {
 }
 
 Register.propTypes = {
-  registerUser: PropTypes.func.isRequired,
+  registerUserAction: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
 };
@@ -129,4 +129,6 @@ const mapStateToProps = (state) => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps, { registerUser })(withRouter(Register));
+export default connect(mapStateToProps, { registerUserAction })(
+  withRouter(Register)
+);

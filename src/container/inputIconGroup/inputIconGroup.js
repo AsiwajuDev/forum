@@ -37,7 +37,7 @@ const InputIconGroup = ({
 InputIconGroup.propTypes = {
   name: PropTypes.string.isRequired,
   placeholder: PropTypes.string,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   icon: PropTypes.string,
   type: PropTypes.string.isRequired,
   error: PropTypes.string,

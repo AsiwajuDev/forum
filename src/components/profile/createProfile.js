@@ -1,6 +1,9 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+
+import { createProfileAction } from "../../actions/profileAction/profileAction";
 
 import TextFieldGroup from "../../container/inputGroup/textFieldGroup";
 import TextareaFieldGroup from "../../container/textareaGroup/textareaFieldGroup";
@@ -32,10 +35,33 @@ class CreateProfile extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
+  }
+
   onSubmit(event) {
     event.preventDefault();
 
-    console.log("Submit");
+    //all form data
+    const profileData = {
+      handle: this.state.handle,
+      company: this.state.company,
+      website: this.state.website,
+      location: this.state.location,
+      status: this.state.status,
+      skills: this.state.skills,
+      githubusername: this.state.githubusername,
+      bio: this.state.bio,
+      twitter: this.state.twitter,
+      facebook: this.state.facebook,
+      linkedin: this.state.linkedin,
+      youtube: this.state.youtube,
+      instagram: this.state.instagram,
+    };
+    console.log(profileData);
+    this.props.createProfileAction(profileData, this.props.history);
   }
 
   onChange(event) {
@@ -131,6 +157,7 @@ class CreateProfile extends Component {
                   info="A unique handle for your profile URL. Your full name, company name, 
                   nickname"
                 />
+
                 <SelectListGroup
                   placeholder="* Status"
                   name="status"
@@ -140,6 +167,7 @@ class CreateProfile extends Component {
                   error={errors.status}
                   info="Give us an idea of where you are at in your career"
                 />
+
                 <TextFieldGroup
                   placeholder="Company"
                   name="company"
@@ -148,6 +176,7 @@ class CreateProfile extends Component {
                   error={errors.company}
                   info="Could be your own company or one you work for"
                 />
+
                 <TextFieldGroup
                   placeholder="Website"
                   name="website"
@@ -156,6 +185,7 @@ class CreateProfile extends Component {
                   error={errors.website}
                   info="Could be your own website or a company one"
                 />
+
                 <TextFieldGroup
                   placeholder="Location"
                   name="location"
@@ -164,6 +194,7 @@ class CreateProfile extends Component {
                   error={errors.location}
                   info="City or city & state suggested (eg. Boston, MA)"
                 />
+
                 <TextFieldGroup
                   placeholder="* Skills"
                   name="skills"
@@ -173,6 +204,7 @@ class CreateProfile extends Component {
                   info="Please use comma separated values (eg.
                     HTML,CSS,JavaScript,PHP"
                 />
+
                 <TextFieldGroup
                   placeholder="Github Username"
                   name="githubusername"
@@ -181,6 +213,7 @@ class CreateProfile extends Component {
                   error={errors.githubusername}
                   info="If you want your latest repos and a Github link, include your username"
                 />
+
                 <TextareaFieldGroup
                   placeholder="Short Bio"
                   name="bio"
@@ -189,8 +222,10 @@ class CreateProfile extends Component {
                   error={errors.bio}
                   info="Tell us a little about yourself"
                 />
+
                 <div className="mb-3">
                   <button
+                    type="button"
                     onClick={() => {
                       this.setState((prevState) => ({
                         displaySocialInputs: !prevState.displaySocialInputs,
@@ -218,6 +253,7 @@ class CreateProfile extends Component {
 }
 
 CreateProfile.propTypes = {
+  createProfileAction: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
 };
@@ -227,4 +263,6 @@ const mapStateToProps = (state) => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps)(CreateProfile);
+export default connect(mapStateToProps, { createProfileAction })(
+  withRouter(CreateProfile)
+);

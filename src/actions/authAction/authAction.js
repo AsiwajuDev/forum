@@ -5,7 +5,7 @@ import { GET_ERRORS, SET_CURRENT_USER } from "../types";
 import setAuthToken from "../../utils/setAuthToken";
 
 //Register User
-export const registerUser = (userData, history) => (dispatch) => {
+export const registerUserAction = (userData, history) => (dispatch) => {
   axios
     .post("/users/register", userData)
     .then((response) => history.push("/login"))
@@ -18,11 +18,10 @@ export const registerUser = (userData, history) => (dispatch) => {
 };
 
 //Login User
-export const loginUser = (userData) => (dispatch) => {
+export const loginUserAction = (userData) => (dispatch) => {
   axios
     .post("/users/login", userData)
     .then((response) => {
-      console.log(response);
       //save to local storage
       const { token } = response.data;
       //set token to local storage
@@ -32,7 +31,7 @@ export const loginUser = (userData) => (dispatch) => {
       //deocde token to get user data
       const decoded = jwt_decode(token);
       //set current user
-      dispatch(setCurrentUser(decoded));
+      dispatch(setCurrentUserAction(decoded));
     })
     .catch((error) =>
       dispatch({
@@ -43,7 +42,7 @@ export const loginUser = (userData) => (dispatch) => {
 };
 
 //set logged in/current user
-export const setCurrentUser = (decoded) => {
+export const setCurrentUserAction = (decoded) => {
   return {
     type: SET_CURRENT_USER,
     payload: decoded,
@@ -51,11 +50,11 @@ export const setCurrentUser = (decoded) => {
 };
 
 //Log user out
-export const logoutUser = () => (dispatch) => {
+export const logoutUserAction = () => (dispatch) => {
   //remove token from local storage
   localStorage.removeItem("jwtToken");
   //remove auth header for feature request
   setAuthToken(false);
   //set current user to {} which will set isAuthenticated to false
-  dispatch(setCurrentUser({}));
+  dispatch(setCurrentUserAction({}));
 };

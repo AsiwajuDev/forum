@@ -4,8 +4,11 @@ import jwt_decode from "jwt-decode";
 import { Provider } from "react-redux";
 
 import setAuthToken from "./utils/setAuthToken";
-import { setCurrentUser, logoutUser } from "./actions/authAction/authAction";
-import { clearCurrentProfile } from "./actions/profileAction/profileAction";
+import {
+  setCurrentUserAction,
+  logoutUserAction,
+} from "./actions/authAction/authAction";
+import { clearCurrentProfileAction } from "./actions/profileAction/profileAction";
 
 import PrivateRoute from "./container/privateRoute/privateRoute";
 
@@ -30,15 +33,15 @@ if (localStorage.jwtToken) {
   //decode token for user info and exp
   const decoded = jwt_decode(localStorage.jwtToken);
   //set user and authenticated
-  store.dispatch(setCurrentUser(decoded));
+  store.dispatch(setCurrentUserAction(decoded));
 
   //check for expired token
   const currentTime = Date.now() / 1000;
   if (decoded.exp < currentTime) {
     //logout user
-    store.dispatch(logoutUser());
+    store.dispatch(logoutUserAction());
     //clear current profile
-    store.dispatch(clearCurrentProfile());
+    store.dispatch(clearCurrentProfileAction());
     //redirect to login
     window.location.href = "/login";
   }

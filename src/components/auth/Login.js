@@ -5,11 +5,11 @@ import { connect } from "react-redux";
 
 import TextFieldGroup from "../../container/inputGroup/textFieldGroup";
 
-import { loginUser } from "../../actions/authAction/authAction";
+import { loginUserAction } from "../../actions/authAction/authAction";
 
 class Login extends Component {
   constructor(props) {
-    super();
+    super(props);
     this.state = {
       email: "",
       password: "",
@@ -48,7 +48,7 @@ class Login extends Component {
       email: this.state.email,
       password: this.state.password,
     };
-    this.props.loginUser(returnUserData);
+    this.props.loginUserAction(returnUserData);
   }
 
   render() {
@@ -59,7 +59,7 @@ class Login extends Component {
         <div className="login p-4">
           <div className="container">
             <div className="row">
-              <div className="col-md-5 col-sm-10 col-xs-10 m-auto">
+              <div className="col-md-8 col-sm-10 col-xs-10 m-auto">
                 <div className="card shade p-5 mb-4 bg-white radius">
                   <h1 className="text-center">Log In</h1>
                   <p className="lead text-center">
@@ -100,7 +100,7 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-  loginUser: PropTypes.func.isRequired,
+  loginUserAction: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
 };
@@ -110,4 +110,4 @@ const mapStateToProps = (state) => ({
   errors: state.errors,
 });
 
-export default connect(mapStateToProps, { loginUser })(withRouter(Login));
+export default connect(mapStateToProps, { loginUserAction })(withRouter(Login));
