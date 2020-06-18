@@ -62,13 +62,13 @@ class Navbar extends Component {
 
     return (
       <div>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4 p-3">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark mb-4 p-3">
           <Link className="navbar-brand" to="/">
             {this.props.brandName}
           </Link>
 
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -76,7 +76,7 @@ class Navbar extends Component {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
 
           <div className="collapse navbar-collapse" id="mobile-nav">
