@@ -242,7 +242,8 @@ class CreateProfile extends Component {
                 <input
                   type="submit"
                   value="Submit"
-                  className="btn btn-info btn-block mt-4"
+                  style={{ width: "200px", fontSize: "1.5rem" }}
+                  className="btn btn-info btn-block mt-4 pb-1 pt-1"
                 />
               </form>
             </div>

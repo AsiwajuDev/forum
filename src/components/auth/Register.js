@@ -58,14 +58,14 @@ class Register extends Component {
         <div className="register p-4">
           <div className="container">
             <div className="row">
-              <div className="col-md-5 col-sm-10 col-xs-10 m-auto">
+              <div className="col-md-6 col-sm-10 col-xs-10 m-auto">
                 <div className="card shade p-5 mb-4 bg-white radius">
                   <h1 className="text-center">Register</h1>
                   <p className="lead text-center">
                     Create your {this.props.brandName} account
                   </p>
 
-                  <form noValidate onSubmit={this.onSubmit}>
+                  <form noValidate onSubmit={this.onSubmit} className="p-4">
                     <TextFieldGroup
                       placeholder="Name"
                       name="name"
@@ -105,7 +105,12 @@ class Register extends Component {
 
                     <input
                       type="submit"
-                      className="btn btn-info btn-block mt-5"
+                      value="Register"
+                      style={{
+                        width: "200px",
+                        fontSize: "1.5rem",
+                      }}
+                      className="btn btn-info btn-block m-auto mt-4 pb-1 pt-1"
                     />
                   </form>
                 </div>
