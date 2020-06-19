@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import Spinner from "../../container/spinner/spinner";
-import ProfileActionEvent from "./profileActionEvents";
+import DashboardActionEvent from "./dashboardActionEvents";
 
 import {
   getCurrentProfileAction,
@@ -37,7 +37,7 @@ class Dashboard extends Component {
               Welcome{" "}
               <Link to={`/profile/${profile.handle}`}> {user.name}</Link>
             </p>
-            <ProfileActionEvent />
+            <DashboardActionEvent />
 
             <div style={{ marginTop: "60px" }}>
               <button
@@ -53,8 +53,8 @@ class Dashboard extends Component {
         //user is logged in but no profile found
         dashboardContent = (
           <div className="text-center">
-            <p className="lead text-muted">Welcome {user.name},</p>
-            <p>
+            <p className="display-4 text-muted">Welcome {user.name},</p>
+            <p className="lead mb-5">
               You dont have a profile yet, click the button below to update your
               dashboard
             </p>
@@ -73,7 +73,6 @@ class Dashboard extends Component {
             <div className="row">
               <div className="col-md-12">
                 <h1 className="display-4">Dashboard</h1>
-                {/* <p className="lead text-muted">Welcome John Doe</p> */}
                 {dashboardContent}
               </div>
             </div>
