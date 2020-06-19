@@ -32,6 +32,19 @@ export const createProfileAction = (profileData, history) => (dispatch) => {
     );
 };
 
+//add Experience
+export const addExperienceAction = (experienceData, history) => (dispatch) => {
+  axios
+    .post("/profile/experience", experienceData)
+    .then((response) => history.push("/dashboard"))
+    .catch((error) =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: error.response.data,
+      })
+    );
+};
+
 //delete account & profile
 export const deleteProfileAction = () => (dispatch) => {
   if (window.confirm("Are you sure? This cannot be undone")) {
