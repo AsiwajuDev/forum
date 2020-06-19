@@ -5,6 +5,7 @@ import {
   PROFILE_LOADING,
   CLEAR_CURRENT_PROFILE,
   GET_ERRORS,
+  SET_CURRENT_USER,
 } from "../types";
 
 //get current profile
@@ -30,6 +31,27 @@ export const createProfileAction = (profileData, history) => (dispatch) => {
       })
     );
 };
+
+//delete account & profile
+export const deleteProfileAction = () => (dispatch) => {
+  if (window.confirm("Are you sure? This cannot be undone")) {
+    axios
+      .delete("/profile")
+      .then((response) =>
+        dispatch({
+          type: SET_CURRENT_USER,
+          payload: {},
+        })
+      )
+      .catch((error) =>
+        dispatch({
+          type: GET_ERRORS,
+          payload: error.response.data,
+        })
+      );
+  }
+};
+
 //profile loading
 export const setProfileLoadingAction = () => {
   return {
