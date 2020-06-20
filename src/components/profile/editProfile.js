@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
@@ -95,7 +95,7 @@ class EditProfile extends Component {
         bio: profile.bio,
         twitter: profile.twitter,
         facebook: profile.facebook,
-        linkedin: profile.linkedin,
+        linkedIn: profile.linkedIn,
         youtube: profile.youtube,
         instagram: profile.instagram,
       });
@@ -117,7 +117,7 @@ class EditProfile extends Component {
       bio: this.state.bio,
       twitter: this.state.twitter,
       facebook: this.state.facebook,
-      linkedin: this.state.linkedin,
+      linkedIn: this.state.linkedIn,
       youtube: this.state.youtube,
       instagram: this.state.instagram,
     };
@@ -155,12 +155,12 @@ class EditProfile extends Component {
           />
 
           <InputIconGroup
-            placeholder="Linkedin Profile URL"
-            name="linkedin"
+            placeholder="linkedIn Profile URL"
+            name="linkedIn"
             icon="fab fa-linkedin-in"
-            value={this.state.linkedin}
+            value={this.state.linkedIn}
             onChange={this.onChange}
-            error={errors.linkedin}
+            error={errors.linkedIn}
           />
 
           <InputIconGroup
@@ -202,6 +202,9 @@ class EditProfile extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
+              <Link to="/dashboard" className="btn btn-light">
+                Go Back
+              </Link>
               <h1 className="display-4 text-center">Edit Profile</h1>
               <small className="d-block pb-3 text-danger">
                 * = required fields

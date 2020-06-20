@@ -56,7 +56,7 @@ class CreateProfile extends Component {
       bio: this.state.bio,
       twitter: this.state.twitter,
       facebook: this.state.facebook,
-      linkedin: this.state.linkedin,
+      linkedIn: this.state.linkedIn,
       youtube: this.state.youtube,
       instagram: this.state.instagram,
     };
@@ -95,12 +95,12 @@ class CreateProfile extends Component {
           />
 
           <InputIconGroup
-            placeholder="Linkedin Profile URL"
-            name="linkedin"
+            placeholder="linkedIn Profile URL"
+            name="linkedIn"
             icon="fab fa-linkedin-in"
-            value={this.state.linkedin}
+            value={this.state.linkedIn}
             onChange={this.onChange}
-            error={errors.linkedin}
+            error={errors.linkedIn}
           />
 
           <InputIconGroup
