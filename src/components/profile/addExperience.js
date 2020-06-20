@@ -7,7 +7,6 @@ import { addExperienceAction } from "../../actions/profileAction/profileAction";
 
 import TextFieldGroup from "../../container/inputGroup/textFieldGroup";
 import TextareaFieldGroup from "../../container/textareaGroup/textareaFieldGroup";
-// import TextFieldGroup from "../../container/inputGroup/textFieldGroup";
 
 class AddExperience extends Component {
   constructor(props) {
