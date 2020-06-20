@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 import Spinner from "../../container/spinner/spinner";
 import DashboardActionEvent from "./dashboardActionEvents";
+import Experience from "./experience";
 
 import {
   getCurrentProfileAction,
@@ -38,6 +39,7 @@ class Dashboard extends Component {
               <Link to={`/profile/${profile.handle}`}> {user.name}</Link>
             </p>
             <DashboardActionEvent />
+            <Experience experience={profile.experience} />
 
             <div style={{ marginTop: "60px" }}>
               <button
