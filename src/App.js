@@ -25,6 +25,7 @@ import EditProfile from "./components/profile/editProfile";
 import AddExperience from "./components/profile/addExperience";
 import AddEducation from "./components/profile/addEducation";
 import Profile from "./components/profiles/profile";
+import ProfileView from "./components/profileView/profileView";
 
 import "./App.css";
 
@@ -79,6 +80,7 @@ class App extends Component {
                 path="/profiles"
                 render={() => <Profile brandName={brandName} />}
               />
+              <Route exact path="/profile/:handle" component={ProfileView} />
               <Switch>
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
               </Switch>

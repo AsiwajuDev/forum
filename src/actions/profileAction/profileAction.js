@@ -20,6 +20,17 @@ export const getCurrentProfileAction = () => (dispatch) => {
     .catch((error) => dispatch({ type: GET_PROFILE, payload: {} }));
 };
 
+//get Profile by handle
+export const getProfileByHandleAction = (handle) => (dispatch) => {
+  dispatch(setProfileLoadingAction());
+  axios
+    .get(`/profile/${handle}`)
+    .then((response) => {
+      dispatch({ type: GET_PROFILE, payload: response.data });
+    })
+    .catch((error) => dispatch({ type: GET_PROFILE, payload: null }));
+};
+
 //create Profile
 export const createProfileAction = (profileData, history) => (dispatch) => {
   axios
