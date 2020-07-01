@@ -37,9 +37,12 @@ class ProfileView extends Component {
             <div className="col-md-6"></div>
           </div>
           <ProfileHeader profile={profile} />
-          <ProfileAbout />
-          <ProfileCredentials />
-          <ProfileGithub />
+          <ProfileAbout profile={profile} />
+          <ProfileCredentials
+            education={profile.education}
+            experience={profile.experience}
+          />
+          <ProfileGithub profile={profile} />
         </div>
       );
     }
