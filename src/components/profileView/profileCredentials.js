@@ -8,14 +8,14 @@ class ProfileCredentials extends Component {
     const experienceItems = experience.map((experience) => (
       <li key={experience._id} className="list-group-item">
         <h4>{experience.company}</h4>
-        <p>
+        <small className="text-muted">
           <Moment format="YYYY/MM/DD">{experience.from}</Moment>-
           {experience.to === null ? (
             "Now"
           ) : (
             <Moment format="YYYY/MM/DD">{experience.to}</Moment>
           )}{" "}
-        </p>
+        </small>
         <p>
           <strong>Position:</strong> {experience.title}{" "}
         </p>
@@ -39,14 +39,14 @@ class ProfileCredentials extends Component {
     const educationItems = education.map((experience) => (
       <li key={experience._id} className="list-group-item">
         <h4>{experience.school}</h4>
-        <p>
+        <small className="text-muted">
           <Moment format="YYYY/MM/DD">{education.from}</Moment>-
           {education.to === null ? (
             "Now"
           ) : (
             <Moment format="YYYY/MM/DD">{education.to}</Moment>
           )}{" "}
-        </p>
+        </small>
         <p>
           <strong>Degree:</strong> {experience.degree}{" "}
         </p>
